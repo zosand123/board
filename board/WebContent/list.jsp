@@ -39,13 +39,16 @@
 		%>
 		<tr>
 			<td><%=rs.getString("name") %></td>
-			<td><%=rs.getString("title") %></td>
+			<td><a href="content.jsp?id=<%=rs.getString("id")%>"><%=rs.getString("title") %></td>
 			<td><%=rs.getString("readnum") %></td>
 			<td><%=rs.getString("writeday") %></td>
 		</tr>
 		<%
 		}
 		%>
+		<tr>
+			<td colspan="4" align="center"><a href="write.jsp">글쓰기</a></td>
+		</tr>
 	</table>
 </body>
 </html>
