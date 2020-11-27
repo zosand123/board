@@ -36,6 +36,7 @@
  </head>
 <body>
   <form method="post" action="update_ok.jsp">
+  <input type="hidden" name="id" value="<%=id %>">
     <table width="600" align="center">
       <tr>
         <td> 제 목 </td>
@@ -62,7 +63,11 @@
   </form>
 </body>
 </html>
-
+<%
+	rs.close();
+	stmt.close();
+	conn.close();
+%>
 
 
 

@@ -52,3 +52,8 @@
 	</table>
 </body>
 </html>
+<%
+rs.close();
+stmt.close();
+conn.close(); //conn은 꼭닫아줘야함!! 안그럼 db잠김
+%>

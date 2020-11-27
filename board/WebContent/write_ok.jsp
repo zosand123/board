@@ -26,6 +26,10 @@
 	pstmt.setString(4,pwd);
 	//쿼리실행
 	pstmt.executeUpdate();
+	
+	pstmt.close();
+	conn.close();
+	
 	//이동하고 싶은 문서 
 	response.sendRedirect("list.jsp");
 %>

@@ -29,4 +29,7 @@
 	}else{
 		response.sendRedirect("content.jsp?id="+id+"&chk=1");
 	}
+	rs.close();
+	stmt.close();
+	conn.close();
 %>
