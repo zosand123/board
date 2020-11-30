@@ -39,7 +39,7 @@
 		%>
 		<tr>
 			<td><%=rs.getString("name") %></td>
-			<td><a href="content.jsp?id=<%=rs.getString("id")%>"><%=rs.getString("title") %></td>
+			<td><a href="readnum.jsp?id=<%=rs.getString("id")%>"><%=rs.getString("title") %></td>
 			<td><%=rs.getString("readnum") %></td>
 			<td><%=rs.getString("writeday") %></td>
 		</tr>

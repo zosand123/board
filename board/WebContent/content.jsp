@@ -12,16 +12,11 @@
 	//request값 읽어오기
 	String id=request.getParameter("id");
 	
-	//조회수증가 : 주말숙제 : 새로고침해도 조회수안올라가게하기
-	String sql="update board set readnum=readnum+1 where id="+id;
-	Statement stmt=conn.createStatement();
-	stmt.executeUpdate(sql);
-	
 	//쿼리생성
-	sql="select * from board where id="+id;
+	String sql="select * from board where id="+id;
 	
 	//심부름꾼호출
-	stmt=conn.createStatement();
+	Statement stmt=conn.createStatement();
 	
 	//쿼리실행 => resultSet 받기
 	ResultSet rs = stmt.executeQuery(sql);
