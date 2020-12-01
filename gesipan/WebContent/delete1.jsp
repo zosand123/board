@@ -10,14 +10,18 @@
     Connection conn=DriverManager.getConnection(db,userid,pw); // db정보,아이디,비번
 	//reauest값 읽어오기
     String id = request.getParameter("id");
-  	//쿼리생성
-	String sql="delete from gesipan where id="+id;
-	//심부름꾼생성
-	Statement stmt=conn.createStatement();
-	//쿼리실행
-	stmt.executeQuery(sql);
-	
-	response.sendRedirect("list.jsp");
+    String pwd = request.getParameter("pwd");
+  	String sql="select pwd from gesipan where id="+id;
+  	Statement stmt= conn.createStatement();
+  	ResultSet rs=stmt.executeQuery(sql);
+  	rs.next();
+    if(pwd.equals(rs.getString("pwd"))){
+		sql="delete from gesipan where id="+id;
+		stmt=conn.createStatement();
+		stmt.executeUpdate(sql);
+		response.sendRedirect("list1.jsp");
+    }else{
+    	response.sendRedirect("content1.jsp?id="+id+"&chk=1");
+    }
 	conn.close();
-	
 %>

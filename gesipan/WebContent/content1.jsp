@@ -18,36 +18,40 @@
 	ResultSet rs=stmt.executeQuery(sql);
 	rs.next();
 	
+	String sung=null;
+	switch(rs.getInt("sung")){
+		case 0: sung="여자"; break;
+		case 1: sung="남자"; break;
+		case 2: sung="선택안함"; break;
+	}
+	
+	//취미구하기
+	String[] hobby=rs.getString("hobby").split(",");
+	String hob="";
+	for(int i=0; i<hobby.length; i++){
+		switch(hobby[i]){
+			case "0": hob=hob+" 맛집"; break;
+			case "1": hob=hob+" 여행"; break;
+			case "2": hob=hob+" 독서"; break;
+			case "3": hob=hob+" 넷볼"; break;
+			case "4": hob=hob+" 풋살"; break;
+			case "5": hob=hob+" 번개"; break;
+		}
+	}
 %>
-			<%
-			String sung=null;
-			switch(rs.getInt("sung")){
-				case 0: sung="여자"; break;
-				case 1: sung="남자"; break;
-				case 2: sung="선택안함"; break;
-			}
-			
-			//취미구하기
-			String[] hobby=rs.getString("hobby").split(",");
-			String hob="";
-			for(int i=0; i<hobby.length; i++){
-				switch(hobby[i]){
-					case "0": hob=hob+" 맛집"; break;
-					case "1": hob=hob+" 여행"; break;
-					case "2": hob=hob+" 독서"; break;
-					case "3": hob=hob+" 넷볼"; break;
-					case "4": hob=hob+" 풋살"; break;
-					case "5": hob=hob+" 번개"; break;
-						
-				}
-			}
-			conn.close();
-			%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#del{visibility:hidden;}
+</style>
+<script>
+function view_del(){
+	document.getElementById("del").style.visibility="visible"
+}
+</script>
 </head>
 <body>
 	<table width="600" align="center">
@@ -70,16 +74,28 @@
 			<td colspan="5"><%=rs.getString("title") %></td>
 		</tr>
 		<tr>
-			<td>내용</td>
+			<td height="200">내용</td>
 			<td colspan="5"><%=rs.getString("content") %></td>
 		</tr>
 		<tr>
 			<td colspan="6" align="center">
-				<button>수정</button>
-				<a href="delete.jsp">삭제</a>
-				<a href="list.jsp">목록</a>
+				<a href="update1.jsp?id=<%=rs.getInt("id")%>">수정</a>
+				<a href="#" onclick="view_del()">삭제</a>
+				<a href="list1.jsp">목록</a>
 			</td>
 		</tr>
+	<%if(request.getParameter("chk")!=null){ %>
+		<tr>
+			<td colspan=6 align="center" style="color:red">
+				비밀번호가 틀렸습니다.
+		</tr>	
+	<%} %>
 	</table>
+	<form method="post" action="delete1.jsp" id="del">
+		<input type="hidden" name="id" value="<%=id%>">
+		비밀번호:<input name="pwd" type="password">
+		<input type="submit" value="삭제">
+	</form>
 </body>
 </html>
+<%conn.close();%>

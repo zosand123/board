@@ -34,7 +34,7 @@
    // 쿼리 실행
    pstmt.executeUpdate();
    // 이동(list.jsp)
-   response.sendRedirect("list.jsp");
+   response.sendRedirect("list1.jsp");
    conn.close();
 %>
 

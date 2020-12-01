@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="write_ok.jsp">
+<form method="post" action="write_ok1.jsp">
   	<table width="600" align="center">
 	<tr>
 		<td>제목</td>
@@ -52,11 +52,9 @@
 		<td>태어난 해</td>
 		<td>
 			<select name="birth">
-				<option value="1999">1999</option>
-				<option value="1998">1998</option>
-				<option value="1997">1997</option>
-				<option value="1996">1996</option>
-				<option value="1995">1995</option>
+				<%for(int i=2020;i>=1900;i--){ %>
+				<option value="<%=i%>"><%=i %></option>
+			<% }%>
 			</select>
 		</td>
 	</tr>

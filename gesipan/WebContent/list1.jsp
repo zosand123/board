@@ -43,7 +43,7 @@
 		%>
 		<tr>
 			<td><%=rs.getString("name") %></td>
-			<td><a href="content.jsp?id=<%=rs.getString("id")%>"><%=rs.getString("title") %></td>
+			<td><a href="content1.jsp?id=<%=rs.getString("id")%>"><%=rs.getString("title") %></td>
 			<td><%=sung%></td>
 			<td><%=rs.getString("writeday") %></td>
 		</tr>
@@ -51,8 +51,9 @@
 		}
 		%>
 		<tr>
-			<td colspan="2"><a href="write.jsp">글쓰기</a></td>
+			<td colspan="2"><a href="write1.jsp">글쓰기</a></td>
 		</tr>
 	</table>
 </body>
 </html>
+<%conn.close();%>

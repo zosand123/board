@@ -25,9 +25,9 @@
 		sql="delete from board where id="+id;
 		stmt=conn.createStatement();
 		stmt.executeUpdate(sql);
-		response.sendRedirect("list.jsp");
+		response.sendRedirect("list1.jsp");
 	}else{
-		response.sendRedirect("content.jsp?id="+id+"&chk=1");
+		response.sendRedirect("content1.jsp?id="+id+"&chk=1");
 	}
 	rs.close();
 	stmt.close();
